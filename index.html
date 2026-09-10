@@ -1,311 +1,903 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tosin Olowu — Flutter Developer</title>
+    <title>Tosin Olowu — Flutter Developer & Mobile Engineer</title>
+    <meta name="description"
+        content="Tosin Olowu is a Flutter developer and mobile engineer from Lagos, Nigeria, building high-performance cross-platform applications for Android and iOS.">
+    <meta name="keywords" content="Flutter developer, Dart, mobile app development, Riverpod, Firebase, Lagos Nigeria">
+    <meta property="og:title" content="Tosin Olowu — Flutter Developer">
+    <meta property="og:description" content="Building high-performance mobile applications with Flutter and Dart.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-    <!-- Sticky Navigation Header -->
-    <header class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">Tosin.dev</a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1.25rem;">Contact</a></li>
-                </ul>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#home" class="logo" id="nav-logo">
+                <span class="logo-bracket">[</span>Tosin<span class="logo-accent">.dev</span><span
+                    class="logo-bracket">]</span>
+            </a>
+            <nav class="nav-center">
+                <a href="#home" class="nav-link" data-section="home">Home</a>
+                <a href="#about" class="nav-link" data-section="about">About</a>
+                <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+                <a href="#resume" class="nav-link" data-section="resume">Resume</a>
+                <a href="#skills" class="nav-link" data-section="skills">Apps</a>
+                <a href="#contact" class="nav-link" data-section="contact">Contact</a>
             </nav>
-            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
-                <i class="ri-menu-line"></i>
+            <a href="#contact" class="nav-cta" id="nav-cta">
+                <span>Hire Me</span>
+                <i class="ri-arrow-right-up-line"></i>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
             </button>
         </div>
-        <ul class="mobile-nav" id="mobile-nav">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact" class="btn btn-primary" style="text-align: center;">Contact Me</a></li>
-        </ul>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#home" class="mob-link">Home</a>
+            <a href="#about" class="mob-link">About</a>
+            <a href="#experience" class="mob-link">Experience</a>
+            <a href="#resume" class="mob-link">Resume</a>
+            <a href="#skills" class="mob-link">Apps</a>
+            <a href="#projects" class="mob-link">Work</a>
+            <a href="#contact" class="mob-link">Contact</a>
+        </div>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="container hero-grid">
-            <div class="hero-content">
-                <span class="hero-tag">Available for Remote Roles</span>
-                <h1 class="hero-title">Building High-Performance Mobile Applications</h1>
-                <p class="hero-desc">Hi, I'm Tosin. I build reliable and scalable cross-platform mobile apps for Android and iOS devices using Flutter and Dart.</p>
-                <div class="hero-actions">
-                    <a href="#projects" class="btn btn-primary">Featured Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        <canvas id="particle-canvas"></canvas>
+        <div class="hero-grid-lines"></div>
+
+        <div class="hero-container">
+            <div class="hero-left">
+                <div class="hero-pill reveal-up" style="--d:0ms">
+                    <span class="pill-dot"></span>
+                    Available for Remote Roles
+                </div>
+
+                <h1 class="hero-title reveal-up" style="--d:100ms">
+                    <span class="line-wrap"><span class="line">Crafting</span></span>
+                    <span class="line-wrap"><span class="line gradient-text">Mobile Apps</span></span>
+                    <span class="line-wrap"><span class="line">That <span
+                                id="typewriter-word">Scale.</span></span></span>
+                </h1>
+
+                <p class="hero-subtitle reveal-up" style="--d:200ms">
+                    Hi, I'm <strong>Tosin</strong> — a Flutter developer from Lagos, Nigeria. I build
+                    reliable, scalable cross-platform apps for Android &amp; iOS with clean architecture
+                    and beautiful interfaces.
+                </p>
+
+                <div class="hero-actions reveal-up" style="--d:300ms">
+                    <a href="#projects" class="btn-primary-glow" id="hero-work-btn">
+                        <span>View My Work</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </a>
+                    <a href="#resume" class="btn-outline-glow" id="hero-cv-btn">
+                        <i class="ri-file-download-line"></i>
+                        <span>Download CV</span>
+                    </a>
+                    <a href="#contact" class="btn-ghost-glow" id="hero-contact-btn">
+                        <span>Let's Talk</span>
+                    </a>
+                </div>
+
+                <div class="hero-stats reveal-up" style="--d:400ms">
+                    <div class="hero-stat" id="hs1">
+                        <span class="stat-value" data-count="3">0</span><span class="stat-plus">+</span>
+                        <span class="stat-name">Years Exp</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="hero-stat" id="hs2">
+                        <span class="stat-value" data-count="5">0</span><span class="stat-plus">+</span>
+                        <span class="stat-name">Apps Shipped</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="hero-stat" id="hs3">
+                        <span class="stat-value" data-count="100">0</span><span class="stat-plus">%</span>
+                        <span class="stat-name">Cross-Platform</span>
+                    </div>
                 </div>
             </div>
-            <div class="hero-art-wrapper">
-                <div class="hero-art">
-                    <div class="hero-orbit hero-orbit-one"></div>
-                    <div class="hero-orbit hero-orbit-two"></div>
-                    <div class="hero-phone">
-                        <div class="phone-notch"></div>
-                        <div class="phone-screen">
-                            <div class="screen-card screen-card-a"></div>
-                            <div class="screen-card screen-card-b"></div>
-                            <div class="screen-card screen-card-c"></div>
-                            <div class="screen-graph">
-                                <span></span>
-                                <span></span>
-                                <span></span>
+
+            <div class="hero-right reveal-up" style="--d:150ms">
+                <div class="hero-visual" id="hero-visual">
+                    <!-- Floating Orbit Rings -->
+                    <div class="orbit orbit-1"></div>
+                    <div class="orbit orbit-2"></div>
+                    <div class="orbit orbit-3"></div>
+
+                    <!-- Center Phone -->
+                    <div class="phone-mockup">
+                        <div class="phone-frame">
+                            <div class="phone-speaker"></div>
+                            <div class="phone-camera"></div>
+                            <div class="phone-screen-area">
+                                <div class="app-topbar">
+                                    <div class="app-avatar"></div>
+                                    <div class="app-title-lines">
+                                        <div class="tl tl-a"></div>
+                                        <div class="tl tl-b"></div>
+                                    </div>
+                                    <div class="app-bell"><i class="ri-notification-3-line"></i></div>
+                                </div>
+                                <div class="app-balance-card">
+                                    <div class="balance-label">Total Balance</div>
+                                    <div class="balance-amount">&#8358;48,250.00</div>
+                                    <div class="balance-row">
+                                        <div class="bal-item">
+                                            <i class="ri-arrow-down-circle-line" style="color:#34d399"></i>
+                                            <span>Income</span>
+                                        </div>
+                                        <div class="bal-item">
+                                            <i class="ri-arrow-up-circle-line" style="color:#f87171"></i>
+                                            <span>Expense</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="app-chart-area">
+                                    <div class="chart-bar" style="--h:55%;--delay:0s"></div>
+                                    <div class="chart-bar" style="--h:80%;--delay:0.1s"></div>
+                                    <div class="chart-bar" style="--h:45%;--delay:0.2s"></div>
+                                    <div class="chart-bar" style="--h:90%;--delay:0.3s"></div>
+                                    <div class="chart-bar active" style="--h:70%;--delay:0.4s"></div>
+                                    <div class="chart-bar" style="--h:60%;--delay:0.5s"></div>
+                                </div>
+                                <div class="app-actions-row">
+                                    <div class="app-action-btn">
+                                        <i class="ri-send-plane-fill"></i>
+                                        <span>Send</span>
+                                    </div>
+                                    <div class="app-action-btn">
+                                        <i class="ri-download-2-fill"></i>
+                                        <span>Receive</span>
+                                    </div>
+                                    <div class="app-action-btn">
+                                        <i class="ri-exchange-dollar-fill"></i>
+                                        <span>Swap</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Tech Badges -->
+                    <div class="tech-badge badge-flutter" id="badge-flutter">
+                        <i class="ri-flutter-fill"></i>
+                        <span>Flutter</span>
+                    </div>
+                    <div class="tech-badge badge-firebase" id="badge-firebase">
+                        <i class="ri-firebase-fill"></i>
+                        <span>Firebase</span>
+                    </div>
+                    <div class="tech-badge badge-dart" id="badge-dart">
+                        <i class="ri-code-s-slash-line"></i>
+                        <span>Dart</span>
+                    </div>
+                    <div class="tech-badge badge-git" id="badge-git">
+                        <i class="ri-git-branch-line"></i>
+                        <span>Riverpod</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-hint">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- Marquee Ticker -->
+    <div class="marquee-strip" aria-hidden="true">
+        <div class="marquee-track">
+            <div class="marquee-inner">
+                <span><i class="ri-flutter-fill"></i> Flutter</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-code-s-slash-line"></i> Dart</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-firebase-fill"></i> Firebase</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-git-branch-line"></i> Riverpod</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-database-2-line"></i> SQLite</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-map-pin-2-line"></i> Maps API</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-android-fill"></i> Android</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-apple-fill"></i> iOS</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-server-line"></i> REST APIs</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-shield-check-line"></i> KYC</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-loop-right-line"></i> CI/CD</span>
+                <span class="marquee-dot">·</span>
+            </div>
+            <!-- Duplicate for seamless loop -->
+            <div class="marquee-inner" aria-hidden="true">
+                <span><i class="ri-flutter-fill"></i> Flutter</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-code-s-slash-line"></i> Dart</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-firebase-fill"></i> Firebase</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-git-branch-line"></i> Riverpod</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-database-2-line"></i> SQLite</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-map-pin-2-line"></i> Maps API</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-android-fill"></i> Android</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-apple-fill"></i> iOS</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-server-line"></i> REST APIs</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-shield-check-line"></i> KYC</span>
+                <span class="marquee-dot">·</span>
+                <span><i class="ri-loop-right-line"></i> CI/CD</span>
+                <span class="marquee-dot">·</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="section-container">
+            <div class="about-layout">
+                <div class="about-left">
+                    <div class="section-eyebrow reveal-up">About Me</div>
+                    <h2 class="section-headline reveal-up" style="--d:80ms">
+                        Building apps that <span class="gradient-text">feel native</span>, perform fast.
+                    </h2>
+                    <p class="about-body reveal-up" style="--d:160ms">
+                        I'm a Flutter developer based in <span class="highlight">Lagos, Nigeria</span>, focused
+                        on clean architecture, smart state management, and writing code that teams actually
+                        want to maintain.
+                    </p>
+                    <p class="about-body reveal-up" style="--d:200ms">
+                        I collaborate with startup founders and engineering teams globally to deliver
+                        production-grade mobile applications on both Android and iOS — on time, every time.
+                    </p>
+
+                    <div class="about-tags reveal-up" style="--d:280ms">
+                        <div class="atag"><i class="ri-flutter-fill"></i> Flutter</div>
+                        <div class="atag"><i class="ri-code-s-slash-line"></i> Dart</div>
+                        <div class="atag"><i class="ri-firebase-fill"></i> Firebase</div>
+                        <div class="atag"><i class="ri-git-branch-line"></i> Riverpod</div>
+                        <div class="atag"><i class="ri-database-2-line"></i> SQLite</div>
+                        <div class="atag"><i class="ri-map-pin-2-line"></i> Maps API</div>
+                    </div>
+
+                    <a href="#contact" class="btn-primary-glow reveal-up"
+                        style="--d:360ms; display:inline-flex; margin-top:2rem" id="about-hire-btn">
+                        <span>Work With Me</span>
+                        <i class="ri-arrow-right-line"></i>
+                    </a>
+
+                    <!-- Process Steps -->
+                    <div class="process-strip reveal-up" style="--d:440ms">
+                        <div class="proc-step">
+                            <div class="proc-num">01</div>
+                            <div class="proc-text">
+                                <strong>Understand</strong>
+                                <span>Deep-dive into your product goals</span>
+                            </div>
+                        </div>
+                        <div class="proc-arrow"><i class="ri-arrow-right-line"></i></div>
+                        <div class="proc-step">
+                            <div class="proc-num">02</div>
+                            <div class="proc-text">
+                                <strong>Architect</strong>
+                                <span>Design clean, scalable systems</span>
+                            </div>
+                        </div>
+                        <div class="proc-arrow"><i class="ri-arrow-right-line"></i></div>
+                        <div class="proc-step">
+                            <div class="proc-num">03</div>
+                            <div class="proc-text">
+                                <strong>Ship</strong>
+                                <span>Deploy polished apps on time</span>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="about-right reveal-up" style="--d:200ms">
+                    <div class="about-card-grid">
+                        <div class="about-kpi" id="ak1">
+                            <div class="kpi-icon"><i class="ri-code-box-line"></i></div>
+                            <div class="kpi-num" data-count="3">0</div>
+                            <div class="kpi-label">Years Building</div>
+                        </div>
+                        <div class="about-kpi kpi-accent" id="ak2">
+                            <div class="kpi-icon"><i class="ri-smartphone-line"></i></div>
+                            <div class="kpi-num" data-count="5">0</div>
+                            <div class="kpi-label">Apps Shipped</div>
+                        </div>
+                        <div class="about-kpi kpi-accent2" id="ak3">
+                            <div class="kpi-icon"><i class="ri-global-line"></i></div>
+                            <div class="kpi-num">10+</div>
+                            <div class="kpi-label">Global Clients</div>
+                        </div>
+                        <div class="about-kpi" id="ak4">
+                            <div class="kpi-icon"><i class="ri-star-line"></i></div>
+                            <div class="kpi-num">100%</div>
+                            <div class="kpi-label">Cross-Platform</div>
+                        </div>
+                    </div>
+
+                    <!-- Floating code snippet -->
+                    <div class="code-snippet reveal-up" style="--d:300ms">
+                        <div class="code-bar">
+                            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                            <span class="code-file">main.dart</span>
+                        </div>
+                        <pre class="code-body"><code><span class="c-keyword">void</span> <span class="c-fn">main</span>() {
+  <span class="c-fn">runApp</span>(
+    <span class="c-class">ProviderScope</span>(
+      child: <span class="c-class">MyApp</span>(),
+    ),
+  );
+}</code></pre>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section" style="background-color: var(--bg-sec);">
-        <div class="container about-grid">
-            <div class="about-graphics">
-                <div class="about-card-stat">
-                    <div class="stat-num">3+</div>
-                    <div class="stat-label">Years of Development</div>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section experience-section">
+        <div class="section-container">
+            <div class="section-header reveal-up">
+                <div class="section-eyebrow">Work Experience</div>
+                <h2 class="section-headline">
+                    Where I've <span class="gradient-text">made an impact</span>
+                </h2>
+                <p class="section-subtext">Professional experience building real-world mobile products at scale.</p>
+            </div>
+
+            <div class="exp-card reveal-up" id="exp-syrol">
+                <div class="exp-left">
+                    <!-- Company logo + image -->
+                    <div class="exp-media">
+                        <div class="exp-logo-wrap">
+                            <img src="images/syrol_logo.jpg" alt="Syroltech logo" class="exp-logo">
+                        </div>
+                        <div class="exp-company-img-wrap">
+                            <img src="images/Syrol.jpg" alt="Syroltech office" class="exp-company-img">
+                            <div class="exp-img-overlay"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="about-card-stat">
-                    <div class="stat-num">100%</div>
-                    <div class="stat-label">Cross-Platform Code Reuse</div>
+
+                <div class="exp-right">
+                    <div class="exp-header-row">
+                        <div>
+                            <div class="exp-role">Mobile Developer</div>
+                            <div class="exp-company-name">
+                                <a href="https://www.syroltech.com/" target="_blank" rel="noopener noreferrer">
+                                    Syroltech
+                                    <i class="ri-external-link-line"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="exp-meta">
+                            <span class="exp-badge">
+                                <i class="ri-map-pin-line"></i> Abuja, Nigeria &middot; Remote
+                            </span>
+                            <span class="exp-badge exp-badge-purple">
+                                <i class="ri-time-line"></i> Full-time
+                            </span>
+                        </div>
+                    </div>
+
+                    <p class="exp-desc">
+                        Syroltech is a cutting-edge technology company specialising in innovative software solutions,
+                        product development, and expert services — building customised digital products for various
+                        industries across Africa.
+                    </p>
+
+                    <ul class="exp-highlights">
+                        <li><i class="ri-checkbox-circle-fill"></i> Built and maintained cross-platform mobile applications using Flutter & Dart</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Collaborated with product and design teams to deliver pixel-perfect UIs</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Integrated REST APIs, Firebase, and third-party SDKs into production apps</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Implemented state management with Riverpod for scalable architecture</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Shipped multiple features on tight deadlines with zero regressions</li>
+                    </ul>
+
+                    <div class="exp-stack">
+                        <span class="ptag">Flutter</span>
+                        <span class="ptag">Dart</span>
+                        <span class="ptag">Riverpod</span>
+                        <span class="ptag">Firebase</span>
+                        <span class="ptag">REST APIs</span>
+                    </div>
+
+                    <a href="https://www.syroltech.com/" target="_blank" rel="noopener noreferrer" class="exp-link">
+                        <i class="ri-global-line"></i>
+                        <span>Visit Syroltech</span>
+                        <i class="ri-arrow-right-up-line"></i>
+                    </a>
                 </div>
             </div>
-            <div class="about-content">
-                <h3>Designing mobile solutions that scale</h3>
-                <p>I am a mobile developer with a strong focus on clean architecture, state-management (Bloc, Riverpod), and writing maintainable code systems.</p>
-                <p>Based in Lagos, Nigeria, I collaborate with startup founders and engineering teams globally to deliver high-quality, native-feeling apps on time.</p>
-                
-                <h4 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Core Stack</h4>
-                <div class="skills-grid">
-                    <div class="skill-badge"><i class="ri-flutter-fill"></i> Flutter</div>
-                    <div class="skill-badge"><i class="ri-code-s-slash-line"></i> Dart</div>
-                    <div class="skill-badge"><i class="ri-firebase-fill"></i> Firebase</div>
-                    <div class="skill-badge"><i class="ri-git-branch-line"></i> Git / CI-CD</div>
+        </div>
+    </section>
+
+    <!-- CV / Resume Download Section -->
+    <section id="resume" class="section cv-section">
+        <div class="section-container">
+            <div class="cv-card reveal-up">
+                <div class="cv-bg-glow"></div>
+
+                <div class="cv-left">
+                    <div class="cv-badge">
+                        <i class="ri-file-text-line"></i>
+                        <span>Curriculum Vitae</span>
+                    </div>
+                    <h2 class="cv-title">
+                        Looking for a vetted <span class="gradient-text">Mobile Engineer?</span>
+                    </h2>
+                    <p class="cv-desc">
+                        Download my full CV detailing 3+ years of professional mobile engineering experience, production apps delivered, technical competencies, and architectural methodology.
+                    </p>
+
+                    <div class="cv-highlights">
+                        <div class="cv-hitem">
+                            <i class="ri-checkbox-circle-fill"></i>
+                            <span>3+ Years Commercial Flutter &amp; Dart Experience</span>
+                        </div>
+                        <div class="cv-hitem">
+                            <i class="ri-checkbox-circle-fill"></i>
+                            <span>Production iOS &amp; Android Apps on App Store &amp; Google Play</span>
+                        </div>
+                        <div class="cv-hitem">
+                            <i class="ri-checkbox-circle-fill"></i>
+                            <span>Riverpod, Clean Architecture, REST APIs &amp; Firebase</span>
+                        </div>
+                        <div class="cv-hitem">
+                            <i class="ri-checkbox-circle-fill"></i>
+                            <span>Open for Full-Time Remote Roles &amp; High-Impact Contracts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cv-right">
+                    <div class="cv-action-card">
+                        <div class="cv-icon-wrap">
+                            <i class="ri-file-pdf-2-fill"></i>
+                            <span class="cv-format-pill">PDF</span>
+                        </div>
+
+                        <div class="cv-file-details">
+                            <div class="cv-filename">Tosin_Olowu_CV.pdf</div>
+                            <div class="cv-meta">Flutter &amp; Mobile Engineer &middot; Updated 2026</div>
+                        </div>
+
+                        <div class="cv-btn-group">
+                            <a href="https://drive.google.com/file/d/1t8IIbcWFLdvKLtu893qoPIXAhMwW8li1/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-primary-glow cv-download-btn">
+                                <i class="ri-download-cloud-2-line"></i>
+                                <span>Download CV</span>
+                                <i class="ri-arrow-right-up-line"></i>
+                            </a>
+                            <a href="https://drive.google.com/file/d/1t8IIbcWFLdvKLtu893qoPIXAhMwW8li1/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="cv-preview-btn">
+                                <i class="ri-eye-line"></i>
+                                <span>Preview Online</span>
+                                <i class="ri-external-link-line"></i>
+                            </a>
+                        </div>
+
+                        <div class="cv-verified">
+                            <i class="ri-shield-check-line"></i>
+                            <span>Hosted securely on Google Drive</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-desc">A selection of production-grade mobile applications built with Flutter and Riverpod.</p>
-            
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="fintech">Fintech</button>
-                <button class="filter-btn" data-filter="business">Business & Ads</button>
+    <!-- App Showcase Section -->
+
+    <section id="skills" class="section showcase-section">
+        <!-- Decorative side label -->
+        <div class="showcase-side-label">APP SHOWCASE</div>
+        <div class="section-container">
+            <div class="section-header reveal-up">
+                <div class="section-eyebrow">App Deep Dive</div>
+                <h2 class="section-headline">
+                    A closer look at <span class="gradient-text">what I've built</span>
+                </h2>
+                <p class="section-subtext">Each app solves a real problem — here's the story behind the code.</p>
             </div>
 
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <article class="project-card" data-category="fintech">
-                    <div class="project-body">
-                        <div class="project-logo">
-                            <img src="images/valarpay.jpg" alt="Valarpay logo">
-                        </div>
-                        <h3 class="project-title">Valarpay</h3>
-                        <p class="project-desc">A secure peer-to-peer fintech application enabling users to send, request, and receive instant payments.</p>
-                        <div class="project-tags">
-                            <span class="tag">Flutter</span>
-                            <span class="tag">Riverpod</span>
-                            <span class="tag">REST APIs</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" aria-label="Valarpay GitHub repository"><i class="ri-github-fill"></i> GitHub</a>
-                            <a href="https://play.google.com/store/apps/details?id=com.valarglobal.valarpay" class="project-link" aria-label="Open Valarpay on Google Play" target="_blank" rel="noopener noreferrer"><i class="ri-google-play-fill"></i> Play Store</a>
+            <!-- App 1: Valarpay -->
+            <div class="showcase-item reveal-up" id="showcase-1">
+                <div class="showcase-image">
+                    <div class="showcase-img-wrap valarpay-slider" id="valarpay-slider">
+                        <img src="images/valarpay2.jpg" alt="Valarpay app screenshot 1" class="slider-img slider-img-active" id="valarpay-img-0">
+                        <img src="images/valarpay1.jpg" alt="Valarpay app screenshot 2" class="slider-img" id="valarpay-img-1">
+                        <div class="showcase-img-glow" style="--glow-color: rgba(139,92,246,0.4)"></div>
+                        <!-- Slide dots -->
+                        <div class="slider-dots">
+                            <span class="slider-dot active" data-slide="0"></span>
+                            <span class="slider-dot" data-slide="1"></span>
                         </div>
                     </div>
-                </article>
-
-                <!-- Project 2 -->
-                <article class="project-card" data-category="business">
-                    <div class="project-body">
-                        <div class="project-logo">
-                            <img src="images/ventetrack.png" alt="Venterack logo">
-                        </div>
-                        <h3 class="project-title">Venterack</h3>
-                        <p class="project-desc">An enterprise store utility allowing retail owners to create cashiers, manage multiple branches, and track sales metrics.</p>
-                        <div class="project-tags">
-                            <span class="tag">Flutter</span>
-                            <span class="tag">Riverpod</span>
-                            <span class="tag">SQLite</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" aria-label="Venterack GitHub repository"><i class="ri-github-fill"></i> GitHub</a>
-                            <a href="#" class="project-link" aria-label="Download or test Venterack app"><i class="ri-download-cloud-2-line"></i> Download/Test App</a>
-                        </div>
+                    <div class="showcase-badge badge-purple">
+                        <i class="ri-google-play-fill"></i> Live on Play Store
                     </div>
-                </article>
-
-                <!-- Project 3 -->
-                <article class="project-card" data-category="business">
-                    <div class="project-body">
-                        <div class="project-logo">
-                            <img src="images/brantro.png" alt="Brantro logo">
-                        </div>
-                        <h3 class="project-title">Brantro</h3>
-                        <p class="project-desc">An advertising e-commerce marketplace connecting businesses with influencers, artists, wall spaces, and digital screens.</p>
-                        <div class="project-tags">
-                            <span class="tag">Flutter</span>
-                            <span class="tag">Riverpod</span>
-                            <span class="tag">Maps API</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" aria-label="Brantro GitHub repository"><i class="ri-github-fill"></i> GitHub</a>
-                            <a href="#" class="project-link" aria-label="Download or test Brantro app"><i class="ri-download-cloud-2-line"></i> Download/Test App</a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 4 -->
-                <article class="project-card" data-category="fintech">
-                    <div class="project-body">
-                        <div class="project-logo">
-                            <img src="images/UBI.png" alt="UBI logo">
-                        </div>
-                        <h3 class="project-title">UBI</h3>
-                        <p class="project-desc">An agricultural fintech ecosystem where agents verify farm details, allowing farmers to apply for loans and secure product inputs.</p>
-                        <div class="project-tags">
-                            <span class="tag">Flutter</span>
-                            <span class="tag">Riverpod</span>
-                            <span class="tag">KYC Verify</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" aria-label="UBI GitHub repository"><i class="ri-github-fill"></i> GitHub</a>
-                            <a href="#" class="project-link" aria-label="Download or test UBI app"><i class="ri-download-cloud-2-line"></i> Download/Test App</a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 5 -->
-                <article class="project-card" data-category="business">
-                    <div class="project-body">
-                        <div class="project-logo">
-                            <img src="images/tripitify.png" alt="Tripitify logo">
-                        </div>
-                        <h3 class="project-title">Tripitify</h3>
-                        <p class="project-desc">A travel booking app where users can create trips around the world, proceed with bookings, and hire trip planners to help organize every detail.</p>
-                        <div class="project-tags">
-                            <span class="tag">Flutter</span>
-                            <span class="tag">Riverpod</span>
-                            <span class="tag">Travel Booking</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link" aria-label="Tripitify GitHub repository"><i class="ri-github-fill"></i> GitHub</a>
-                            <a href="#" class="project-link" aria-label="Download or test Tripitify app"><i class="ri-download-cloud-2-line"></i> Download/Test App</a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section" style="background-color: var(--bg-sec);">
-        <div class="container">
-            <h2 class="section-title">Technical Capabilities</h2>
-            <p class="section-desc">Core areas I use to build reliable, production-ready mobile applications.</p>
-            
-            <div class="skills-progress">
-                <!-- Skill 1 -->
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <span class="progress-name">State Management (Riverpod)</span>
-                    </div>
-                    <p>Encapsulating logic, provider lifecycles, global caching, and clean side-effect controls.</p>
                 </div>
-
-                <!-- Skill 2 -->
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <span class="progress-name">Flutter Architecture</span>
+                <div class="showcase-content">
+                    <div class="showcase-number">01</div>
+                    <span class="showcase-category">Fintech &bull; Payments</span>
+                    <h3 class="showcase-title">Valarpay</h3>
+                    <p class="showcase-desc">
+                        A secure peer-to-peer fintech application built for the African market.
+                        Users can send money instantly to any bank account, request payments,
+                        split bills, and manage wallets — all with bank-grade encryption and
+                        real-time transaction tracking.
+                    </p>
+                    <ul class="showcase-features">
+                        <li><i class="ri-checkbox-circle-fill"></i> Instant P2P transfers with zero delays</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Multi-wallet support &amp; bill payments</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Biometric authentication &amp; 2FA</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Real-time transaction notifications</li>
+                    </ul>
+                    <div class="showcase-stack">
+                        <span class="ptag">Flutter</span>
+                        <span class="ptag">Riverpod</span>
+                        <span class="ptag">REST APIs</span>
+                        <span class="ptag">Firebase</span>
                     </div>
-                    <p>Clean rendering setups, custom layouts, modular patterns, and UI transitions.</p>
-                </div>
-
-                <!-- Skill 3 -->
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <span class="progress-name">API & Cloud Integrations</span>
+                    <div class="showcase-actions">
+                        <a href="https://play.google.com/store/apps/details?id=com.valarglobal.valarpay"
+                            class="btn-primary-glow" target="_blank" rel="noopener noreferrer" id="valarpay-play-btn">
+                            <i class="ri-google-play-fill"></i>
+                            <span>Play Store</span>
+                        </a>
+                        <a href="https://apps.apple.com/ng/app/valarpay-local-global-bank/id6755668965"
+                            class="btn-outline-glow" target="_blank" rel="noopener noreferrer" id="valarpay-appstore-btn">
+                            <i class="ri-apple-fill"></i>
+                            <span>App Store</span>
+                        </a>
+                        <a href="https://github.com/Nifemie" class="btn-outline-glow" id="valarpay-github-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="ri-github-fill"></i>
+                            <span>GitHub</span>
+                        </a>
                     </div>
-                    <p>REST/Websocket syncing, offline localized databases (SQLite), and payment gateway systems.</p>
                 </div>
             </div>
+
+            <!-- App 2: Venterack (reversed) -->
+            <div class="showcase-item showcase-reverse reveal-up" id="showcase-2">
+                <div class="showcase-image">
+                    <div class="showcase-img-wrap">
+                        <img src="images/venterack_web.jpg" alt="Venterack dashboard screenshot">
+                        <div class="showcase-img-glow" style="--glow-color: rgba(52,211,153,0.4)"></div>
+                    </div>
+                    <div class="showcase-badge badge-green">
+                        <i class="ri-store-2-line"></i> Business Tool
+                    </div>
+                </div>
+                <div class="showcase-content">
+                    <div class="showcase-number">02</div>
+                    <span class="showcase-category">Commerce &bull; Retail Management</span>
+                    <h3 class="showcase-title">Venterack</h3>
+                    <p class="showcase-desc">
+                        An enterprise-grade store management utility designed for retail businesses
+                        operating multiple branches. Owners can create cashier accounts, monitor
+                        branch performance, track daily sales metrics, manage inventory, and
+                        generate detailed revenue reports — all from a single dashboard.
+                    </p>
+                    <ul class="showcase-features">
+                        <li><i class="ri-checkbox-circle-fill"></i> Multi-branch management &amp; analytics</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Cashier accounts with role-based access</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Offline-first with SQLite local storage</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Sales charts &amp; inventory tracking</li>
+                    </ul>
+                    <div class="showcase-stack">
+                        <span class="ptag">Flutter</span>
+                        <span class="ptag">Riverpod</span>
+                        <span class="ptag">SQLite</span>
+                        <span class="ptag">REST APIs</span>
+                    </div>
+                    <div class="showcase-actions">
+                        <a href="https://drive.google.com/file/d/16_mIXw6pmlEL5V45J2rJm4ahP9D9g-DH/view?usp=sharing" class="btn-primary-glow btn-green" id="venterack-dl-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="ri-download-cloud-2-line"></i>
+                            <span>Download APK</span>
+                        </a>
+                        <a href="https://www.ventetrack.com/" class="btn-outline-glow" id="venterack-web-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="ri-global-line"></i>
+                            <span>Visit Website</span>
+                        </a>
+                        <a href="https://github.com/Nifemie" class="btn-outline-glow" id="venterack-github-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="ri-github-fill"></i>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- App 3: Brantro -->
+            <div class="showcase-item reveal-up" id="showcase-3">
+                <div class="showcase-image">
+                    <div class="showcase-img-wrap valarpay-slider" id="brantro-slider">
+                        <img src="images/brantro1.jpg" alt="Brantro app screenshot 1" class="slider-img slider-img-active" id="brantro-img-0">
+                        <img src="images/brantro2.jpg" alt="Brantro app screenshot 2" class="slider-img" id="brantro-img-1">
+                        <div class="showcase-img-glow" style="--glow-color: rgba(245,158,11,0.4)"></div>
+                        <div class="slider-dots">
+                            <span class="slider-dot active" data-slide="0"></span>
+                            <span class="slider-dot" data-slide="1"></span>
+                        </div>
+                    </div>
+                    <div class="showcase-badge badge-amber">
+                        <i class="ri-advertisement-line"></i> AdTech Platform
+                    </div>
+                </div>
+                <div class="showcase-content">
+                    <div class="showcase-number">03</div>
+                    <span class="showcase-category">AdTech &bull; Marketplace</span>
+                    <h3 class="showcase-title">Brantro</h3>
+                    <p class="showcase-desc">
+                        A first-of-its-kind advertising e-commerce marketplace that connects brands
+                        with the right audience — whether that's influencers, muralists, outdoor
+                        wall spaces, or digital billboard screens. Businesses post their ad requirements
+                        and get matched with vetted creatives and spaces on a live map.
+                    </p>
+                    <ul class="showcase-features">
+                        <li><i class="ri-checkbox-circle-fill"></i> Live map of ad spaces &amp; influencers</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> In-app chat between brands &amp; creators</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Verified influencer &amp; artist profiles</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Campaign tracking &amp; booking system</li>
+                    </ul>
+                    <div class="showcase-stack">
+                        <span class="ptag">Flutter</span>
+                        <span class="ptag">Riverpod</span>
+                        <span class="ptag">Maps API</span>
+                        <span class="ptag">Firebase</span>
+                    </div>
+                    <div class="showcase-actions">
+                        <a href="https://drive.google.com/file/d/1r3A0vQHUk5sJH_ZfWN6214-4hn4P0ljM/view?usp=sharing" class="btn-primary-glow btn-amber" id="brantro-dl-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="ri-download-cloud-2-line"></i>
+                            <span>Download APK</span>
+                        </a>
+                        <a href="https://brantro-frontend.vercel.app/" class="btn-outline-glow" id="brantro-web-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="ri-global-line"></i>
+                            <span>Visit Website</span>
+                        </a>
+                        <a href="https://github.com/Nifemie" class="btn-outline-glow" id="brantro-github-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="ri-github-fill"></i>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- App 4: UBI (reversed) -->
+            <div class="showcase-item showcase-reverse reveal-up" id="showcase-4">
+                <div class="showcase-image">
+                    <div class="showcase-img-wrap valarpay-slider" id="ubi-slider">
+                        <img src="images/UBI2.jpg" alt="UBI app screenshot 1" class="slider-img slider-img-active" id="ubi-img-0">
+                        <img src="images/UBI1.jpg" alt="UBI app screenshot 2" class="slider-img" id="ubi-img-1">
+                        <div class="showcase-img-glow" style="--glow-color: rgba(16,185,129,0.4)"></div>
+                        <div class="slider-dots">
+                            <span class="slider-dot active" data-slide="0"></span>
+                            <span class="slider-dot" data-slide="1"></span>
+                        </div>
+                    </div>
+                    <div class="showcase-badge badge-green">
+                        <i class="ri-plant-line"></i> AgriFintech
+                    </div>
+                </div>
+                <div class="showcase-content">
+                    <div class="showcase-number">04</div>
+                    <span class="showcase-category">Fintech &bull; Agriculture</span>
+                    <h3 class="showcase-title">UBI</h3>
+                    <p class="showcase-desc">
+                        An agricultural fintech ecosystem bridging the gap between smallholder
+                        farmers and financial services. Field agents use the app to geo-verify farms
+                        and collect KYC data, enabling farmers to apply for microloans and access
+                        subsidised crop inputs through a trusted digital identity system.
+                    </p>
+                    <ul class="showcase-features">
+                        <li><i class="ri-checkbox-circle-fill"></i> KYC verification with biometrics &amp; ID scan</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> GPS farm boundary mapping &amp; geo-tagging</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Microloan application &amp; status tracking</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Agent &amp; farmer dual-role system</li>
+                    </ul>
+                    <div class="showcase-stack">
+                        <span class="ptag">Flutter</span>
+                        <span class="ptag">Riverpod</span>
+                        <span class="ptag">KYC API</span>
+                        <span class="ptag">Maps API</span>
+                    </div>
+                    <div class="showcase-actions">
+                        <a href="https://drive.google.com/file/d/1sYETvwIn5ZBNQflWHFBu2Ll4YLhOrZHe/view?usp=sharing" class="btn-primary-glow btn-green" id="ubi-dl-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="ri-download-cloud-2-line"></i>
+                            <span>Download APK</span>
+                        </a>
+                        <a href="https://github.com/Nifemie" class="btn-outline-glow" id="ubi-github-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="ri-github-fill"></i>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- App 5: Tripitify -->
+            <div class="showcase-item reveal-up" id="showcase-5">
+                <div class="showcase-image">
+                    <div class="showcase-img-wrap">
+                        <img src="images/tripitify_mockup.jpg" alt="Tripitify app screenshot">
+                        <div class="showcase-img-glow" style="--glow-color: rgba(34,211,238,0.4)"></div>
+                    </div>
+                    <div class="showcase-badge badge-cyan">
+                        <i class="ri-flight-takeoff-line"></i> Travel App
+                    </div>
+                </div>
+                <div class="showcase-content">
+                    <div class="showcase-number">05</div>
+                    <span class="showcase-category">Travel &bull; Booking Platform</span>
+                    <h3 class="showcase-title">Tripitify</h3>
+                    <p class="showcase-desc">
+                        A full-featured travel planning and booking app that makes organising
+                        international trips effortless. Users can browse destinations, book flights
+                        and hotels, build custom itineraries, and optionally hire a professional
+                        trip planner from a verified marketplace to manage every detail of the journey.
+                    </p>
+                    <ul class="showcase-features">
+                        <li><i class="ri-checkbox-circle-fill"></i> Destination discovery &amp; trip builder</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Verified trip planner marketplace</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Hotel, flight &amp; activity bookings</li>
+                        <li><i class="ri-checkbox-circle-fill"></i> Real-time itinerary collaboration</li>
+                    </ul>
+                    <div class="showcase-stack">
+                        <span class="ptag">Flutter</span>
+                        <span class="ptag">Riverpod</span>
+                        <span class="ptag">Travel APIs</span>
+                        <span class="ptag">Firebase</span>
+                    </div>
+                    <div class="showcase-actions">
+                        <a href="#" class="btn-primary-glow btn-cyan" id="tripitify-dl-btn">
+                            <i class="ri-download-cloud-2-line"></i>
+                            <span>Download APK</span>
+                        </a>
+                        <a href="https://github.com/Nifemie" class="btn-outline-glow" id="tripitify-github-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="ri-github-fill"></i>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section" style="background-color: var(--bg-sec);">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-desc">Have a product idea or need assistance building a production mobile app? Drop me a message.</p>
-            
-            <div class="contact-grid">
-                <form id="contact-form" class="contact-form" action="https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID" method="POST">
-                    <div class="form-group">
-                        <label for="form-name" class="form-label">Your Name</label>
-                        <input type="text" id="form-name" name="name" class="form-control" required placeholder="John Doe">
-                    </div>
-                    <div class="form-group">
-                        <label for="form-email" class="form-label">Email Address</label>
-                        <input type="email" id="form-email" name="email" class="form-control" required placeholder="john@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="form-message" class="form-label">Your Message</label>
-                        <textarea id="form-message" name="message" rows="5" class="form-control" required placeholder="Tell me about your project..."></textarea>
-                    </div>
-                    <input type="hidden" name="_subject" value="New portfolio contact message">
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-                </form>
+    <section id="contact" class="section contact-section">
+        <div class="section-container">
+            <div class="contact-layout">
+                <div class="contact-left reveal-up">
+                    <div class="section-eyebrow">Contact</div>
+                    <h2 class="section-headline">
+                        Let's build <span class="gradient-text">something great</span> together
+                    </h2>
+                    <p class="about-body">
+                        Have a product idea or need a skilled Flutter developer for your team?
+                        I'm open to freelance projects, contract roles, and full-time remote positions.
+                    </p>
 
-                <div class="contact-info">
-                    <div>
-                        <h3 style="font-size: 1.4rem; margin-bottom: 2rem;">Contact Details</h3>
-                        <div class="info-item">
-                            <div class="info-icon"><i class="ri-mail-line"></i></div>
-                            <div class="info-text">
-                                <h4>Email</h4>
-                                <a href="mailto:tosinolowu280@gmail.com" style="color: var(--text-primary);">tosinolowu280@gmail.com</a>
+                    <div class="contact-details">
+                        <a href="mailto:tosinolowu280@gmail.com" class="contact-row" id="contact-email">
+                            <div class="contact-icon"><i class="ri-mail-send-line"></i></div>
+                            <div class="contact-text">
+                                <span class="ct-label">Email</span>
+                                <span class="ct-value">tosinolowu280@gmail.com</span>
+                            </div>
+                            <i class="ri-external-link-line ct-arrow"></i>
+                        </a>
+                        <div class="contact-row" id="contact-location">
+                            <div class="contact-icon"><i class="ri-map-pin-line"></i></div>
+                            <div class="contact-text">
+                                <span class="ct-label">Location</span>
+                                <span class="ct-value">Lagos, Nigeria &middot; Remote Worldwide</span>
                             </div>
                         </div>
-                        <div class="info-item">
-                            <div class="info-icon"><i class="ri-map-pin-line"></i></div>
-                            <div class="info-text">
-                                <h4>Location</h4>
-                                <p>Lagos, Nigeria</p>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-icon"><i class="ri-time-line"></i></div>
-                            <div class="info-text">
-                                <h4>Availability</h4>
-                                <p>Mon - Fri, 9am - 6pm WAT</p>
+                        <div class="contact-row" id="contact-avail">
+                            <div class="contact-icon avail-icon"><i class="ri-time-line"></i></div>
+                            <div class="contact-text">
+                                <span class="ct-label">Availability</span>
+                                <span class="ct-value">Mon &ndash; Fri, 9am &ndash; 6pm WAT</span>
                             </div>
                         </div>
                     </div>
 
-                    <div>
-                        <h4 style="margin-bottom: 1rem;">Social Channels</h4>
-                        <div class="social-links">
-                            <a href="https://github.com/Nifemie" class="social-btn" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="ri-github-fill"></i></a>
-                            <a href="https://www.linkedin.com/in/tosin-samuel-olowu-7221993a3/" class="social-btn" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="ri-linkedin-fill"></i></a>
-                            <a href="https://x.com/NifemiStudio" class="social-btn" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="ri-twitter-fill"></i></a>
+                    <div class="book-call-strip reveal-up" style="--d:80ms">
+                        <div class="bcs-left">
+                            <div class="bcs-icon"><i class="ri-calendar-check-line"></i></div>
+                            <div class="bcs-text">
+                                <strong>Book a Free Discovery Call</strong>
+                                <span>30 minutes · Let's talk about your project</span>
+                            </div>
                         </div>
+                        <a href="#"
+                            onclick="Calendly.initPopupWidget({url:'https://calendly.com/tosinolowu280'}); return false;"
+                            class="btn-primary-glow bcs-btn" id="book-call-btn">
+                            <i class="ri-calendar-2-line"></i>
+                            <span>Pick a Time</span>
+                        </a>
                     </div>
+
+                    <div class="social-row">
+                        <a href="https://github.com/Nifemie" class="soc-btn" target="_blank" rel="noopener noreferrer"
+                            aria-label="GitHub" id="soc-github">
+                            <i class="ri-github-fill"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/tosin-samuel-olowu-7221993a3/" class="soc-btn"
+                            target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" id="soc-linkedin">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                        <a href="https://x.com/NifemiStudio" class="soc-btn" target="_blank" rel="noopener noreferrer"
+                            aria-label="Twitter/X" id="soc-twitter">
+                            <i class="ri-twitter-x-fill"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-right reveal-up" style="--d:120ms">
+                    <form id="contact-form" class="contact-form" action="https://formspree.io/f/mvkodnad" method="POST">
+                        <div class="form-group">
+                            <label for="form-name" class="form-label">Your Name</label>
+                            <input type="text" id="form-name" name="name" class="form-control" required
+                                placeholder="John Doe" autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-email" class="form-label">Email Address</label>
+                            <input type="email" id="form-email" name="email" class="form-control" required
+                                placeholder="john@example.com" autocomplete="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-subject" class="form-label">Subject</label>
+                            <input type="text" id="form-subject" name="subject" class="form-control"
+                                placeholder="Project inquiry, collaboration...">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-message" class="form-label">Message</label>
+                            <textarea id="form-message" name="message" rows="5" class="form-control" required
+                                placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <input type="hidden" name="_subject" value="New portfolio contact message">
+                        <button type="submit" class="btn-primary-glow submit-btn" id="form-submit-btn">
+                            <span id="btn-text">Send Message</span>
+                            <i class="ri-send-plane-fill" id="btn-icon"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -313,34 +905,44 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <a href="#" class="logo">Tosin.dev</a>
-                    <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-secondary);">Building reliable cross-platform solutions with beautiful, high-performance mobile layouts.</p>
-                </div>
-                <div>
-                    <h4 style="margin-bottom: 1.5rem; font-size: 1.1rem;">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="margin-bottom: 1.5rem; font-size: 1.1rem;">Inquiries</h4>
-                    <p style="font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-secondary);">Available for contract engineering roles and collaborative freelance applications globally.</p>
-                    <a href="mailto:tosinolowu280@gmail.com" style="font-weight: 600; color: var(--primary);">tosinolowu280@gmail.com</a>
-                </div>
+        <div class="footer-inner">
+            <div class="footer-left">
+                <a href="#home" class="logo">
+                    <span class="logo-bracket">[</span>Tosin<span class="logo-accent">.dev</span><span
+                        class="logo-bracket">]</span>
+                </a>
+                <p class="footer-tagline">Building reliable cross-platform mobile applications with Flutter and Dart.
+                </p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Tosin Olowu. All rights reserved.</p>
-                <p>Designed with professional deep slate UI theme.</p>
+            <div class="footer-links-col">
+                <span class="footer-col-label">Navigation</span>
+                <a href="#home" class="footer-link">Home</a>
+                <a href="#about" class="footer-link">About</a>
+                <a href="#experience" class="footer-link">Experience</a>
+                <a href="#resume" class="footer-link">Download CV</a>
+                <a href="#skills" class="footer-link">Apps</a>
+                <a href="#contact" class="footer-link">Contact</a>
             </div>
+            <div class="footer-links-col">
+                <span class="footer-col-label">Contact</span>
+                <a href="mailto:tosinolowu280@gmail.com" class="footer-link">Email</a>
+                <a href="https://github.com/Nifemie" class="footer-link" target="_blank"
+                    rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/tosin-samuel-olowu-7221993a3/" class="footer-link" target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Tosin Olowu. All rights reserved.</p>
+            <p>Crafted with passion in Lagos, Nigeria &#127475;&#127468;</p>
         </div>
     </footer>
 
+    <!-- Calendly popup widget -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
     <script src="script.js"></script>
 </body>
+
 </html>
