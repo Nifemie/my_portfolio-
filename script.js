@@ -43,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let W, H, particles = [];
-        const COUNT = 80;
-        const CONNECT_DIST = 120;
-        const COLORS = ['rgba(139,92,246,', 'rgba(167,139,250,', 'rgba(236,72,153,', 'rgba(34,211,238,'];
+        const COUNT = 70;
+        const CONNECT_DIST = 110;
+        const COLORS = ['rgba(37,99,235,', 'rgba(59,130,246,', 'rgba(255,255,255,'];
 
         function resize() {
             W = canvas.width  = canvas.offsetWidth;
@@ -57,11 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
             reset() {
                 this.x  = Math.random() * W;
                 this.y  = Math.random() * H;
-                this.vx = (Math.random() - 0.5) * 0.4;
-                this.vy = (Math.random() - 0.5) * 0.4;
+                this.vx = (Math.random() - 0.5) * 0.35;
+                this.vy = (Math.random() - 0.5) * 0.35;
                 this.r  = Math.random() * 1.5 + 0.5;
                 this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
-                this.alpha = Math.random() * 0.5 + 0.2;
+                this.alpha = Math.random() * 0.4 + 0.15;
             }
             update() {
                 this.x += this.vx;
@@ -88,9 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < CONNECT_DIST) {
-                        const alpha = (1 - dist / CONNECT_DIST) * 0.18;
+                        const alpha = (1 - dist / CONNECT_DIST) * 0.14;
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(139,92,246,${alpha})`;
+                        ctx.strokeStyle = `rgba(37,99,235,${alpha})`;
                         ctx.lineWidth = 0.8;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
